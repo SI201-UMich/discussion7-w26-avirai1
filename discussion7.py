@@ -68,7 +68,7 @@ def calculate_avg_price_by_neighbourhood_group_and_room(listings):
         neighbourhood_group = listing["neighbourhood_group"]
         room_type = listing["room_type"]
 
-        price = (listing["price"])
+        price = float(listing["price"])
 
         key = (neighbourhood_group, room_type)
 
