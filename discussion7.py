@@ -68,7 +68,7 @@ def calculate_avg_price_by_neighbourhood_group_and_room(listings):
         neighbourhood_group = listing["neighbourhood_group"]
         room_type = listing["room_type"]
 
-        price = float(listing["price"])
+        price = (listing["price"])
 
         key = (neighbourhood_group, room_type)
 
@@ -101,7 +101,13 @@ def write_summary_csv(out_filename, avg_prices):
         None
             Writes a CSV file with header: neighbourhood_group, room_type, average_price
     """
-    pass
+    with open(out_filename, 'w', newline='', encoding='utf-8') as outfile:
+        writer = csv.writer(outfile)
+
+        writer.writerow(["neighbourhood_group", "room_type", "average_price"])
+
+        for (neighbourhood_group, room_type), avg_price in avg_prices.items():
+            writer.writerow([neighbourhood_group, room_type, avg_price])
 
 ###############################################################################
 ##### UNIT TESTS (Do not modify the code below!)
